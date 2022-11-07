@@ -1,9 +1,13 @@
 import React from 'react';
+import Slider from '../Slider/Slider';
+import './Home.css'
 
 const Home = () => {
     return (
-        <div>
-            <h3>this is Home</h3>
+        <div className='top'>
+            <section className='my-5'>
+                <Slider></Slider>
+            </section>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 .logo {
 
-    width: 30%;
+    width: 25%;
 }
 
 .clr {
@@ -15,6 +15,7 @@
     color: white;
     padding: 5px 25px;
     text-decoration: none;
+    border-radius: 30px;
 }
 
 .loginbtn:hover {

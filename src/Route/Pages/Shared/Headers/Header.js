@@ -6,7 +6,7 @@ import './Header.css'
 const Header = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-white p-3 fixed-top">
+            <nav className="navbar navbar-expand-lg bg-white fixed-top">
                 <div className="d-flex container justify-content-between align-items-center">
 
                     <div className="first-part d-flex justify-content-center align-items-center">

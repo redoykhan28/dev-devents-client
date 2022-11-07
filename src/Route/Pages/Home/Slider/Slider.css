@@ -1,0 +1,77 @@
+/* carosell */
+.carousel-caption {
+
+    height: 90%;
+}
+
+.img {
+
+    height: 700px;
+    object-fit: cover;
+}
+
+/* darken carousell image */
+.carousel-item::before {
+    content: "";
+    background-color: #000;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.6;
+}
+
+.iconhandle {
+
+    background-color: rgb(41, 41, 41);
+    padding: 30px;
+    border-radius: 50px;
+}
+
+.upontxt {
+
+    font-family: cursive;
+    font: italic;
+}
+
+.mtext {
+
+    font-family: serif;
+
+}
+
+.headerbtn {
+
+    background-color: #FE3E01;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.headerbtn:hover {
+
+    background-color: #343332;
+    color: white;
+
+}
+
+.headerbtn2 {
+
+    border: 2px solid #FE3E01;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #FE3E01;
+
+}
+
+.headerbtn2:hover {
+
+    background-color: #FE3E01;
+    color: white;
+
+}
