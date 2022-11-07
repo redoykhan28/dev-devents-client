@@ -32,7 +32,7 @@ const Header = () => {
 
                                     <NavLink to={'/add-service'} className={({ isActive }) => isActive ? 'clr mx-2 text-decoration-none fw-bold' : 'mx-2 text-decoration-none text-black fw-semibold'}>Add Service</NavLink>
 
-                                    <Link className="btn loginbtn my-2 my-lg-0 d-lg-none d-block" role="button" aria-disabled="true">Login</Link>
+                                    <Link to={'/login'} className="btn loginbtn my-2 my-lg-0 d-lg-none d-block" role="button" aria-disabled="true">Login</Link>
                                 </li>
                             </ul>
 
@@ -42,7 +42,7 @@ const Header = () => {
 
                     <div className="third-part d-none d-lg-flex">
 
-                        <Link className=" loginbtn" role="button" aria-disabled="true">Login</Link>
+                        <Link to={'/login'} className=" loginbtn" role="button" aria-disabled="true">Login</Link>
 
                     </div>
 
