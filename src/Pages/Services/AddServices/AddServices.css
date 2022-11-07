@@ -1,0 +1,52 @@
+.background {
+
+    background-color: #d4d3d5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.addbtn {
+
+    background-color: #FE3E01;
+    width: 95%;
+    margin: 20px auto;
+    color: white;
+}
+
+.addbtn:hover {
+
+    background-color: #262525;
+    color: white;
+}
+
+.inp {
+
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border: none;
+}
+
+/* carosell */
+.cp {
+
+    height: 300px;
+}
+
+.imgservice {
+
+    height: 300px;
+    object-fit: cover;
+}
+
+/* darken carousell image */
+.ci::before {
+    content: "";
+    background-color: #000;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.6;
+}

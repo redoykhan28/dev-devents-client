@@ -3,6 +3,8 @@ import Main from '../Layout/Main'
 import Home from '../Pages/Home/Home/Home'
 import Services from '../Pages/Services/Services/Services'
 import Blogs from '../Pages/Blogs/Blogs'
+import AuthLayout from '../Layout/authLayout'
+import AddServices from '../Pages/Services/AddServices/AddServices'
 
 //setup route
 export const route = createBrowserRouter([
@@ -29,6 +31,17 @@ export const route = createBrowserRouter([
             },
 
 
+        ]
+    },
+    {
+        path: '/',
+        element: <AuthLayout></AuthLayout>,
+        children: [
+
+            {
+                path: '/add-service',
+                element: <AddServices></AddServices>
+            }
         ]
     }
 ]

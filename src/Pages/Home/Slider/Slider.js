@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Slider = () => {
     return (
         <div>
-            <section className="section-space mb-5" id="home">
+            <section className="section-space mb-5">
 
                 <div id="carouselExampleControls" className="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div className="carousel-inner">

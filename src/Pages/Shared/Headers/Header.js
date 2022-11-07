@@ -30,6 +30,8 @@ const Header = () => {
 
                                     <NavLink to={'/blogs'} className={({ isActive }) => isActive ? 'clr mx-2 text-decoration-none fw-bold' : 'mx-2 text-decoration-none text-black fw-semibold'}>Blogs</NavLink>
 
+                                    <NavLink to={'/add-service'} className={({ isActive }) => isActive ? 'clr mx-2 text-decoration-none fw-bold' : 'mx-2 text-decoration-none text-black fw-semibold'}>Add Service</NavLink>
+
                                     <Link className="btn loginbtn my-2 my-lg-0 d-lg-none d-block" role="button" aria-disabled="true">Login</Link>
                                 </li>
                             </ul>
