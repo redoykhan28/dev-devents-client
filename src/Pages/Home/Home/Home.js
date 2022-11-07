@@ -8,6 +8,10 @@ const Home = () => {
             <section className='my-5'>
                 <Slider></Slider>
             </section>
+
+            <section className='my-5'>
+
+            </section>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import slider1 from '../../../../images/banner/luis-tosta-MEZDyn98La8-unsplash.jpg'
-import slider2 from '../../../../images/banner/adi-goldstein-Hli3R6LKibo-unsplash.jpg'
+import slider1 from '../../../images/banner/luis-tosta-MEZDyn98La8-unsplash.jpg'
+import slider2 from '../../../images/banner/adi-goldstein-Hli3R6LKibo-unsplash.jpg'
 import './Slider.css'
 import { Link } from 'react-router-dom';
 
