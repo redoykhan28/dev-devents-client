@@ -20,3 +20,19 @@
     color: white;
 
 }
+
+.logoutbtn {
+
+    background-color: #2b2a2a;
+    border: none;
+    color: white;
+    padding: 5px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+}
+
+.logoutbtn:hover {
+
+    background-color: #FE3E01;
+    color: white;
+}
