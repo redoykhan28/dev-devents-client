@@ -21,6 +21,8 @@ const AddServices = () => {
         const price = form.price.value
         const description = form.description.value
         const email = user.email
+        const date = new Date()
+        console.log(date)
 
         // console.log(title, image, ratings, price, description)
 
@@ -30,7 +32,8 @@ const AddServices = () => {
             ratings,
             price,
             description,
-            email
+            email,
+            date
         }
 
         //post the currentService

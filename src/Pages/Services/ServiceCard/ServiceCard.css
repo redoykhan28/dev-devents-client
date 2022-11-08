@@ -1,0 +1,35 @@
+.card {
+
+    width: 22rem;
+    margin: 20px auto;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+}
+
+.crdimg {
+
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+}
+
+.cardbtn {
+
+    background-color: #FE3E01;
+    border: none;
+    width: 100%;
+    color: white;
+    border-radius: 40px;
+}
+
+.cardbtn:hover {
+
+    background-color: #2b2a2a;
+    color: white;
+}
+
+.star {
+
+    color: goldenrod;
+}

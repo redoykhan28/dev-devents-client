@@ -35,8 +35,8 @@ const Login = () => {
                 const user = res.user
                 console.log(user)
                 form.reset()
-                setError('')
                 toast.success('Login Successfully!')
+                setError('')
                 navigate(from, { replaced: true })
             })
             .catch(err => {

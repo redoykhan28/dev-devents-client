@@ -19,7 +19,7 @@ const Header = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-white fixed-top">
+            <nav className="navbar nvbr navbar-expand-lg bg-white fixed-top">
                 <div className="d-flex container justify-content-between align-items-center">
 
                     <div className="first-part d-flex justify-content-center align-items-center">
@@ -42,7 +42,7 @@ const Header = () => {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className='d-flex flex-column flex-lg-row'>
 
-                                    <NavLink to={'/home'} className={({ isActive }) => isActive ? 'clr me-4 text-decoration-none fw-semibold' : 'me-2 text-decoration-none text-black fw-semibold'}>Home</NavLink>
+                                    <NavLink to={'/home'} className={({ isActive }) => isActive ? 'clr me-4  text-decoration-none fw-semibold' : 'me-4 text-decoration-none text-black fw-semibold'}>Home</NavLink>
 
                                     <NavLink to={'/services'} className={({ isActive }) => isActive ? 'clr mx-4 text-decoration-none fw-bold' : 'mx-4 text-decoration-none text-black fw-semibold'}>Services</NavLink>
 
