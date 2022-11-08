@@ -1,0 +1,33 @@
+.top3 {
+
+    margin-top: 150px;
+}
+
+.purbtn {
+
+    background-color: #FE3E01;
+    border: none;
+    padding: 14px 25px;
+    color: white;
+    border-radius: 10px;
+}
+
+.purbtn:hover {
+
+    color: white;
+    background-color: #1d1c1c;
+}
+
+.rvbtn {
+
+    background-color: #FE3E01;
+    border: none;
+    padding: 10px 40px;
+    color: white;
+    border-radius: 30px;
+}
+
+.rvbtn:hover {
+    color: white;
+    background-color: #1d1c1c;
+}

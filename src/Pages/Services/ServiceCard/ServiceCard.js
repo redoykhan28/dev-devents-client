@@ -1,9 +1,10 @@
 import React from 'react';
 import './ServiceCard.css'
 import { FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
-    const { title, image, price, description, ratings } = service
+    const { _id, title, image, price, description, ratings } = service
     return (
 
         <div>
@@ -17,7 +18,7 @@ const ServiceCard = ({ service }) => {
                         <h6>Price: ${price}</h6>
                         <h6>Ratings: <FaStar className='star' /> {ratings} </h6>
                     </div>
-                    <button className='btn cardbtn'>Details</button>
+                    <Link to={`/serviceDetails/${_id}`}><button className='btn cardbtn'>Details</button></Link>
                 </div>
             </div>
 
