@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { authContext } from '../../../Context/AuthContext';
 import image from '../../../images/AddService/halil-ibrahim-cetinkaya-lbBrOujiO-Q-unsplash.jpg'
 import './AddServices.css'
+import toast, { Toaster } from 'react-hot-toast';
+
 const AddServices = () => {
 
+    //use context
+    const { user } = useContext(authContext)
 
     //service posting to db
     const btnHandler = (e) => {
@@ -15,8 +20,38 @@ const AddServices = () => {
         const ratings = form.serviceRatings.value
         const price = form.price.value
         const description = form.description.value
+        const email = user.email
 
-        console.log(title, image, ratings, price, description)
+        // console.log(title, image, ratings, price, description)
+
+        const currentService = {
+            title,
+            image,
+            ratings,
+            price,
+            description,
+            email
+        }
+
+        //post the currentService
+        fetch('http://localhost:5000/service', {
+
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentService)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log(data)
+                toast.success('Service added Successfully!')
+                form.reset()
+
+            })
+
     }
 
 
@@ -77,6 +112,7 @@ const AddServices = () => {
                 </form>
 
             </section>
+            <Toaster />
         </div>
     );
 };

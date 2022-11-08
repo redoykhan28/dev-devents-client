@@ -7,6 +7,7 @@ import AuthLayout from '../Layout/authLayout'
 import AddServices from '../Pages/Services/AddServices/AddServices'
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
+import PrivateRoute from "./PrivateRoute";
 
 //setup route
 export const route = createBrowserRouter([
@@ -42,7 +43,7 @@ export const route = createBrowserRouter([
 
             {
                 path: '/add-service',
-                element: <AddServices></AddServices>
+                element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
             },
             {
                 path: '/login',
