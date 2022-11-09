@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../Context/AuthContext';
 import image from '../../images/my reviews/christin-hume-Hcfwew744z4-unsplash.jpg'
+import image2 from '../../images/no data/No data-pana.png'
 import ReviewTable from './ReviewTable';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const MyReview = () => {
     //use context
@@ -16,6 +19,31 @@ const MyReview = () => {
             .then(res => res.json())
             .then(data => setMyReview(data))
     }, [user?.email])
+
+
+    //delete a review
+    const deleteHandler = (id) => {
+
+        const agree = window.confirm('Are you sure you want to delete?')
+
+        if (agree) {
+
+            fetch(`http://localhost:5000/review/${id}`, {
+
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+
+                    console.log(data)
+                    const remaining = myReview.filter(review => review._id !== id)
+                    setMyReview(remaining)
+                    toast.success('Deleted Successfully')
+                })
+
+        }
+
+    }
 
     return (
         <div className='top'>
@@ -32,6 +60,7 @@ const MyReview = () => {
                                     <h1 className="fw-bold ">My
                                         <span className='clr'> Reviews</span>
                                     </h1>
+                                    <p>Total Review: {myReview.length}</p>
 
                                 </div>
 
@@ -43,25 +72,35 @@ const MyReview = () => {
                 </section>
             </section>
 
-            <section className='my-5 container text-center'>
+            <section className='my-5 container '>
                 <h4 className='text-center my-5'>My <span className='clr'>Review Data</span></h4>
-                <table class="table ">
-                    <thead>
-                        <tr>
-                            <th scope="col">Service Name</th>
-                            <th scope="col">Review</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            myReview.map(reviews => <ReviewTable key={reviews._id} myReviews={reviews}></ReviewTable>)
-                        }
+                {
+                    myReview.length > 0 ?
+                        <table class="table table-danger table-striped ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Service Name</th>
+                                    <th scope="col">Review</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    myReview.map(reviews => <ReviewTable key={reviews._id} myReviews={reviews} deleteHandler={deleteHandler}></ReviewTable>)
+                                }
 
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                        :
+                        <div className='text-center my-5'>
+                            <img className='img-fluid w-25 mx-auto' src={image2} alt="no data" />
+                            <h4 className='my-2'>No Review Found</h4>
+                        </div>
+                }
             </section>
+            <Toaster />
         </div >
     );
 };

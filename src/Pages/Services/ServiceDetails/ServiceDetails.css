@@ -31,3 +31,32 @@
     color: white;
     background-color: #1d1c1c;
 }
+
+.pagination {
+
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.btnpage {
+
+    border: 1px solid #FE3E01;
+    color: #FE3E01;
+    padding: 5px 15px;
+
+}
+
+.btnpage:hover {
+
+    background-color: #FE3E01;
+    color: white;
+}
+
+.selected {
+
+    background-color: #FE3E01;
+    padding: 8px;
+    color: white;
+    border: none;
+}

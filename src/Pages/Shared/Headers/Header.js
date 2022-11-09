@@ -24,7 +24,7 @@ const Header = () => {
 
                     <div className="first-part d-flex justify-content-center align-items-center">
 
-                        <Link className='navbar-brand"'><img src={logo} className='img-fluid logo' alt="logo" /></Link>
+                        <Link to={'/home'} className='navbar-brand"'><img src={logo} className='img-fluid logo' alt="logo" /></Link>
 
 
                     </div>
