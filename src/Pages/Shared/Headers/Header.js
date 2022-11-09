@@ -53,7 +53,7 @@ const Header = () => {
                                             <>
                                                 <NavLink to={'/add-service'} className={({ isActive }) => isActive ? 'clr mx-4 text-decoration-none fw-bold' : 'mx-4 text-decoration-none text-black fw-semibold'}>Add Service</NavLink>
 
-                                                <NavLink className={({ isActive }) => isActive ? 'clr mx-4 text-decoration-none fw-bold' : 'mx-4 text-decoration-none text-black fw-semibold'}>My Review</NavLink></>
+                                                <NavLink to={'/my-review'} className={({ isActive }) => isActive ? 'clr mx-4 text-decoration-none fw-bold' : 'mx-4 text-decoration-none text-black fw-semibold'}>My Review</NavLink></>
                                             :
                                             undefined
                                     }

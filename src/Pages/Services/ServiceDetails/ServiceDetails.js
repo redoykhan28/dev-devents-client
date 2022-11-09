@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { authContext } from '../../../Context/AuthContext';
 import { FaStar, FaShoppingBag } from "react-icons/fa";
 import './ServiceDetails.css'
+import toast, { Toaster } from 'react-hot-toast';
+import Reviews from '../Reviews/Reviews';
+
+
 
 
 const ServiceDetails = () => {
@@ -10,21 +14,68 @@ const ServiceDetails = () => {
     //use context
     const { user } = useContext(authContext)
 
+    //use state for fetch review
+    const [reviews, setReviews] = useState([])
+
+    const service = useLoaderData()
+    console.log(service)
+
+
+
+    useEffect(() => {
+
+        fetch('http://localhost:5000/review')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+
+    }, [])
+
     //post review
     const btnHandler = (e) => {
         e.preventDefault()
         const form = e.target
         const review = form.textarea.value
+        const username = user.displayName
+        const profile = user.photoURL
+        const email = user.email
+        const serviceName = service.title
+        const date = new Date()
+
+
         console.log(review)
 
         const currentReview = {
 
-
+            review,
+            username,
+            profile,
+            email,
+            serviceName,
+            date
         }
+
+        //post data
+        fetch('http://localhost:5000/review', {
+
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentReview)
+
+        })
+            .then(res => res.json)
+            .then(data => {
+
+                console.log(data)
+                toast.success('Review added Successfully!')
+                form.reset()
+                const totalReviews = [...reviews, reviews]
+                setReviews(totalReviews)
+            })
     }
 
-    const service = useLoaderData()
-    console.log(service)
+
     const { title, image, description, ratings, price } = service
     return (
         <div className='top3'>
@@ -77,10 +128,18 @@ const ServiceDetails = () => {
                         }
                     </div>
                     <div className="col-lg-6">
-                        <h4 className='text-center my-5'>Customer <span className='clr'>Review</span></h4>
+                        <h4 className='text-center mt-5 mb-3'>Customer <span className='clr'>Review</span></h4>
+                        <p className='mb-5 text-center fw-bold'>Total Reviews: <span className='clr'>{reviews.length}</span></p>
+                        <div>
+                            {
+                                reviews?.map(review => <Reviews key={review._id}
+                                    reviews={review}></Reviews>)
+                            }
+                        </div>
                     </div>
                 </div>
             </section>
+            <Toaster />
         </div>
     );
 };
