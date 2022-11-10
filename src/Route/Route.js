@@ -33,8 +33,7 @@ export const route = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Services></Services>,
-                loader: () => fetch('https://devent-server.vercel.app/service')
+                element: <Services></Services>
             },
             {
                 path: '/blogs',

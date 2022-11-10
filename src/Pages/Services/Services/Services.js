@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../../Hooks/UserHooks';
 import image from '../../../images/Services/aleksandr-popov-hTv8aaPziOQ-unsplash.jpg'
 import ServiceCard from '../ServiceCard/ServiceCard';
 import './Service.css'
@@ -7,10 +9,24 @@ import './Service.css'
 
 const Services = () => {
 
+    //title
+    useTitle('Services')
 
-    //load data
-    const services = useLoaderData()
-    console.log(services)
+    //loader
+    const [loader, setloader] = useState(true)
+
+    //state for service
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        fetch('https://devent-server.vercel.app/service')
+            .then(res => res.json())
+            .then(data => {
+                setServices(data)
+                setloader(false)
+
+            })
+    }, [])
 
     return (
         <div className='top bgclr'>
@@ -46,13 +62,28 @@ const Services = () => {
                 <h2 className='text-center fw-semibold mt-5 mb-4'>The <span className='clr fw-bold'>Event Management</span> Specialist</h2>
                 <p className='text-center mb-5 fw-bold'>From Wedding Functions to Birthday Parties or Corporate Events to Musical Functions, <br />    Devents offer full range of Events Management Services that scale to your needs & budget.</p>
 
-                <div className='service-card my-5'>
-                    {
 
-                        services?.map(service => <ServiceCard key={service._id}
-                            service={service}></ServiceCard>)
-                    }
-                </div>
+                {
+
+                    loader ?
+                        <div className='top'>
+                            <div className="d-flex justify-content-center">
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <div className='service-card my-5'>
+                            {
+
+                                services?.map(service => <ServiceCard key={service._id}
+                                    service={service}></ServiceCard>)
+                            }
+                        </div>
+                }
+
+
 
             </section>
 

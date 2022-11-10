@@ -22,7 +22,7 @@ const Header = () => {
             <nav className="navbar nvbr navbar-expand-lg bg-white fixed-top">
                 <div className="d-flex container justify-content-between align-items-center">
 
-                    <div className="first-part d-flex justify-content-center align-items-center">
+                    <div className="first-part">
 
                         <Link to={'/home'} className='navbar-brand"'><img src={logo} className='img-fluid logo' alt="logo" /></Link>
 
@@ -30,7 +30,7 @@ const Header = () => {
                     </div>
 
 
-                    <div className="third-part d-none d-lg-flex">
+                    <div className="third-part d-flex">
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@ const Header = () => {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className='d-flex flex-column flex-lg-row'>
 
-                                    <NavLink to={'/home'} className={({ isActive }) => isActive ? 'clr me-4  text-decoration-none fw-semibold' : 'me-4 text-decoration-none text-black fw-semibold'}>Home</NavLink>
+                                    <NavLink to={'/home'} className={({ isActive }) => isActive ? 'clr me-4 ms-4 ms-lg-0  text-decoration-none fw-semibold' : 'me-4 ms-4 ms-lg-0 text-decoration-none text-black fw-semibold'}>Home</NavLink>
 
                                     <NavLink to={'/services'} className={({ isActive }) => isActive ? 'clr mx-4 text-decoration-none fw-bold' : 'mx-4 text-decoration-none text-black fw-semibold'}>Services</NavLink>
 
@@ -67,20 +67,22 @@ const Header = () => {
                                 </li>
                             </ul>
 
+                            {
+                                user ?
+                                    <div className='d-flex align-items-center'>
+                                        <div className=''>
+                                            <img className='img-fluid dp shadow-lg rounded-circle ms-4 me-2' src={user.photoURL} alt="Dp" />
+                                        </div>
+                                        <Link onClick={handleLogout} className=" logoutbtn ms-2" role="button" aria-disabled="true">Logout</Link>
+                                    </div>
+
+                                    :
+                                    <Link to={'/login'} className=" loginbtn ms-5" role="button" aria-disabled="true">Login</Link>
+                            }
+
                         </div>
 
-                        {
-                            user ?
-                                <div className='d-flex align-items-center'>
-                                    <div className=''>
-                                        <img className='img-fluid dp shadow-lg rounded-circle ms-4 me-2' src={user.photoURL} alt="Dp" />
-                                    </div>
-                                    <Link onClick={handleLogout} className=" logoutbtn ms-2" role="button" aria-disabled="true">Logout</Link>
-                                </div>
 
-                                :
-                                <Link to={'/login'} className=" loginbtn ms-5" role="button" aria-disabled="true">Login</Link>
-                        }
 
                     </div>
 

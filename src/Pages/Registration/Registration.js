@@ -2,9 +2,13 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
+import useTitle from '../../Hooks/UserHooks';
 
 
 const Registration = () => {
+
+    //title
+    useTitle('Registration')
 
     //use location
     const location = useLocation()
@@ -40,11 +44,32 @@ const Registration = () => {
 
                 const user = res.user
                 console.log(user)
-                form.reset()
-                setError('')
-                handleProfile(name, photo)
-                navigate(from, { replaced: true })
-                toast.success('Registration Successfully!')
+
+                const currentUser = { email: user?.email }
+
+                //get jwt token
+                fetch('https://devent-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        console.log(data)
+
+                        //store token inside localStorage
+                        localStorage.setItem('devent-token', data.token)
+                        form.reset()
+                        setError('')
+                        handleProfile(name, photo)
+                        navigate(from, { replaced: true })
+                        toast.success('Registration Successfully!')
+                    })
+
+
 
             })
             .catch(err => {

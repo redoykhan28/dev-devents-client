@@ -8,3 +8,26 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+
+/* phone  */
+@media screen and (max-width:576px) {
+
+    .service-card {
+
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+/* tablet */
+@media screen and (min-width:577px) and (max-width:991px) {
+
+    .service-card {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+}

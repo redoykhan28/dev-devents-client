@@ -8,6 +8,7 @@ import Reviews from '../Reviews/Reviews';
 import image2 from '../../../images/no data/No data-pana.png'
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import useTitle from '../../../Hooks/UserHooks';
 
 
 
@@ -15,6 +16,9 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 
 const ServiceDetails = () => {
+
+    //title
+    useTitle('Service Details')
 
     //use  location
     const location = useLocation()
@@ -107,7 +111,7 @@ const ServiceDetails = () => {
                     <div className="col-md-6">
                         <PhotoProvider>
                             <PhotoView src={image}>
-                                <img className='img-fluid imghv  mx-auto rounded-5' src={image} alt="" />
+                                <img className='img-fluid imghv my-5 my-lg-0  mx-auto rounded-5' src={image} alt="" />
                             </PhotoView>
                         </PhotoProvider>
                     </div>

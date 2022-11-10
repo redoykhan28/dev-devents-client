@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../Hooks/UserHooks';
 import ServiceCard from '../../Services/ServiceCard/ServiceCard';
 import Slider from '../Slider/Slider';
 import './Home.css'
 
 const Home = () => {
+
+    //title
+    useTitle('Home')
 
     const limit = 3
     const [service, setService] = useState([])

@@ -3,8 +3,12 @@ import { authContext } from '../../../Context/AuthContext';
 import image from '../../../images/AddService/halil-ibrahim-cetinkaya-lbBrOujiO-Q-unsplash.jpg'
 import './AddServices.css'
 import toast, { Toaster } from 'react-hot-toast';
+import useTitle from '../../../Hooks/UserHooks';
 
 const AddServices = () => {
+
+    //title
+    useTitle('Add Service')
 
     //use context
     const { user } = useContext(authContext)

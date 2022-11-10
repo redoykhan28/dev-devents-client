@@ -3,9 +3,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthContext';
 import './Login.css'
 import toast, { Toaster } from 'react-hot-toast';
+import logo1 from '../../images/login/7123025_logo_google_g_icon.png'
+import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../Hooks/UserHooks';
 
 
 const Login = () => {
+
+    //title
+    useTitle('Login')
 
     //use location
     const location = useLocation()
@@ -17,7 +23,45 @@ const Login = () => {
     const [error, setError] = useState(null)
 
     //use context
-    const { login } = useContext(authContext)
+    const { login, googleSignin } = useContext(authContext)
+
+
+    // google signin 
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogle = () => {
+
+        googleSignin(googleProvider)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                const currentUser = { email: user?.email }
+
+                //get jwt token
+                fetch('https://devent-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        console.log(data)
+
+                        //store token inside localStorage
+                        localStorage.setItem('devent-token', data.token)
+                        navigate(from, { replaced: true })
+                    })
+
+            })
+            .catch(err => {
+
+                console.log(err)
+            })
+
+    }
 
     //handle button
     const btnHandler = (e) => {
@@ -37,7 +81,6 @@ const Login = () => {
                 form.reset()
                 toast.success('Login Successfully!')
                 setError('')
-
                 const currentUser = { email: user?.email }
 
                 //get jwt token
@@ -88,9 +131,14 @@ const Login = () => {
                         <button type="submit" className="btn bt">Login</button>
                         <p className='my-4'><small>Need an Account? <Link className='clr text-decoration-none' to={'/registration'}>Registration</Link></small></p>
                     </form>
-
+                </div>
+                <p className='clr text-center'><small>Or</small></p>
+                <div onClick={handleGoogle} className='d-flex justify-content-center align-items-center social'>
+                    <img className='img-fluid logogoogle ms-2' src={logo1} alt="logo" />
+                    <h6>Continiue with Google</h6>
                 </div>
             </div>
+
             <Toaster />
         </div>
     );

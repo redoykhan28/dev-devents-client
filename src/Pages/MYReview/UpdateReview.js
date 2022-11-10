@@ -2,10 +2,14 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import image from '../../images/my reviews/christin-hume-Hcfwew744z4-unsplash.jpg'
 import toast, { Toaster } from 'react-hot-toast';
+import useTitle from '../../Hooks/UserHooks';
 
 
 
 const UpdateReview = () => {
+
+    //title
+    useTitle('Update Review')
 
     const update = useLoaderData()
     // console.log(update)

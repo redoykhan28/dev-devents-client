@@ -4,9 +4,13 @@ import image from '../../images/my reviews/christin-hume-Hcfwew744z4-unsplash.jp
 import image2 from '../../images/no data/No data-pana.png'
 import ReviewTable from './ReviewTable';
 import toast, { Toaster } from 'react-hot-toast';
+import useTitle from '../../Hooks/UserHooks';
 
 
 const MyReview = () => {
+    //title
+    useTitle('My Review')
+
     //use context
     const { user, logout } = useContext(authContext);
 
@@ -91,7 +95,7 @@ const MyReview = () => {
                 <h4 className='text-center my-5'>My <span className='clr'>Review Data</span></h4>
                 {
                     myReview.length > 0 ?
-                        <table class="table table-danger table-striped ">
+                        <table class="table w-75 mx-auto table-danger table-striped ">
                             <thead>
                                 <tr>
                                     <th scope="col">Service Name</th>
