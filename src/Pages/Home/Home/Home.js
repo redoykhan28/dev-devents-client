@@ -4,6 +4,7 @@ import useTitle from '../../../Hooks/UserHooks';
 import ServiceCard from '../../Services/ServiceCard/ServiceCard';
 import Gallery from '../Gallery/Gallery';
 import Slider from '../Slider/Slider';
+import Success from '../Success/Success';
 import './Home.css'
 
 const Home = () => {
@@ -56,6 +57,10 @@ const Home = () => {
                 <div className='my-5'>
                     <Gallery></Gallery>
                 </div>
+            </section>
+
+            <section className='my-5'>
+                <Success></Success>
             </section>
         </div>
     );
