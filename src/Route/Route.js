@@ -65,7 +65,7 @@ export const route = createBrowserRouter([
             {
                 path: '/updateReview/:id',
                 element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/review/dynamic/${params.id}`)
             },
             {
                 path: '/login',

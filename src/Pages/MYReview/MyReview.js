@@ -8,17 +8,32 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const MyReview = () => {
     //use context
-    const { user } = useContext(authContext);
+    const { user, logout } = useContext(authContext);
 
     //state for review
     const [myReview, setMyReview] = useState([])
     console.log(myReview)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review/?email=${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/review/mail/?email=${user.email}`, {
+
+            headers: {
+
+                authorization: `Bearer ${localStorage.getItem('devent-token')}`
+            }
+
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+
+                    return logout()
+
+
+                }
+                return res.json()
+            })
             .then(data => setMyReview(data))
-    }, [user?.email])
+    }, [user?.email, logout])
 
 
     //delete a review
@@ -28,7 +43,7 @@ const MyReview = () => {
 
         if (agree) {
 
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`http://localhost:5000/review/delete/${id}`, {
 
                 method: 'DELETE'
             })

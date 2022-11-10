@@ -31,6 +31,7 @@ const AuthContext = ({ children }) => {
     const logout = () => {
 
         setLoader(true)
+        localStorage.removeItem('devent-token')
         return signOut(auth)
     }
 

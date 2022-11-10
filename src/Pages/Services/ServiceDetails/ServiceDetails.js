@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { authContext } from '../../../Context/AuthContext';
 import { FaStar, FaShoppingBag } from "react-icons/fa";
 import './ServiceDetails.css'
@@ -13,10 +13,13 @@ import image2 from '../../../images/no data/No data-pana.png'
 
 const ServiceDetails = () => {
 
+    //use  location
+    const location = useLocation()
+
     const service = useLoaderData()
     console.log(service)
 
-    //state  for pagination
+    // //state  for pagination
     const [page, setPage] = useState(0)
     const [perPage, setperPage] = useState(5)
     const [count, setCount] = useState([])
@@ -29,14 +32,14 @@ const ServiceDetails = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/review/?serviceId=${service._id}&page=${page}&perPage=${perPage}`)
+        fetch(`http://localhost:5000/review/servicereview/?serviceId=${service?._id}&page=${page}&perPage=${perPage}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data.result)
                 setCount(data.count)
             })
 
-    }, [service._id, page, perPage])
+    }, [service?._id, page, perPage])
 
 
     const pages = Math.ceil(count / perPage)
@@ -138,7 +141,8 @@ const ServiceDetails = () => {
                                         <div className="card-body">
 
                                             <p className="card-text">Wanna add a review? then</p>
-                                            <Link to={'/login'}><button className='btn loginbtn'>Login</button> </Link>
+                                            <Link to={'/login'} state=
+                                                {{ from: location }} replaced><button className='btn loginbtn'>Login</button> </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -147,20 +151,25 @@ const ServiceDetails = () => {
                     <div className="col-lg-6">
                         <h4 className='text-center mt-5 mb-3'>Customer <span className='clr'>Review</span></h4>
                         <p className='mb-5 text-center fw-bold'>Total Reviews: <span className='clr'>{reviews.length}</span></p>
-                        {
-                            reviews.length > 0 ?
-                                <div>
-                                    {
-                                        reviews?.map(review => <Reviews key={review._id}
-                                            reviews={review}></Reviews>)
-                                    }
-                                </div>
-                                :
-                                <div className='text-center my-5'>
-                                    <img className='img-fluid w-25 mx-auto' src={image2} alt="no data" />
-                                    <h4 className='my-2'>No Review Found</h4>
-                                </div>
-                        }
+
+                        <div>
+                            {
+                                reviews.length > 0 ?
+                                    <div>
+                                        {
+                                            reviews?.map(review => <Reviews key={review._id}
+                                                reviews={review}></Reviews>)
+                                        }
+                                    </div>
+                                    :
+                                    <div className='text-center my-5'>
+                                        <img className='img-fluid w-25 mx-auto' src={image2} alt="no data" />
+                                        <h4 className='my-2'>No Review Found</h4>
+                                    </div>
+                            }
+                        </div>
+
+
                         <div className='my-4'>
                             <div className='pagination'>
                                 {
