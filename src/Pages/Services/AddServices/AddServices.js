@@ -37,7 +37,7 @@ const AddServices = () => {
         }
 
         //post the currentService
-        fetch('http://localhost:5000/service', {
+        fetch('https://devent-server.vercel.app/service', {
 
             method: 'POST',
             headers: {

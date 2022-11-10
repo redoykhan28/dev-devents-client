@@ -11,7 +11,7 @@ const Home = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/service/?limit=${limit}`)
+        fetch(`https://devent-server.vercel.app/service/?limit=${limit}`)
             .then(res => res.json())
             .then(data => {
 

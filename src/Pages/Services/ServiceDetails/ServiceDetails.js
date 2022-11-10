@@ -6,6 +6,9 @@ import './ServiceDetails.css'
 import toast, { Toaster } from 'react-hot-toast';
 import Reviews from '../Reviews/Reviews';
 import image2 from '../../../images/no data/No data-pana.png'
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+
 
 
 
@@ -32,7 +35,7 @@ const ServiceDetails = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/review/servicereview/?serviceId=${service?._id}&page=${page}&perPage=${perPage}`)
+        fetch(`https://devent-server.vercel.app/review/servicereview/?serviceId=${service?._id}&page=${page}&perPage=${perPage}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data.result)
@@ -73,7 +76,7 @@ const ServiceDetails = () => {
         }
 
         //post data
-        fetch('http://localhost:5000/review', {
+        fetch('https://devent-server.vercel.app/review', {
 
             method: 'POST',
             headers: {
@@ -102,7 +105,11 @@ const ServiceDetails = () => {
             <section className='container'>
                 <div className="row my-5 gx-5">
                     <div className="col-md-6">
-                        <img className='img-fluid  mx-auto rounded-5' src={image} alt="" />
+                        <PhotoProvider>
+                            <PhotoView src={image}>
+                                <img className='img-fluid imghv  mx-auto rounded-5' src={image} alt="" />
+                            </PhotoView>
+                        </PhotoProvider>
                     </div>
                     <div className="col-md-6">
                         <h3 className='text-start clr fw-bold'>{title}</h3>

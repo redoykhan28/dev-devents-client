@@ -15,7 +15,7 @@ const MyReview = () => {
     console.log(myReview)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review/mail/?email=${user.email}`, {
+        fetch(`https://devent-server.vercel.app/review/mail/?email=${user.email}`, {
 
             headers: {
 
@@ -43,7 +43,7 @@ const MyReview = () => {
 
         if (agree) {
 
-            fetch(`http://localhost:5000/review/delete/${id}`, {
+            fetch(`https://devent-server.vercel.app/review/delete/${id}`, {
 
                 method: 'DELETE'
             })

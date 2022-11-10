@@ -60,3 +60,16 @@
     color: white;
     border: none;
 }
+
+.imghv {
+
+    opacity: 1;
+}
+
+.imghv:hover {
+
+    content: "";
+    background-color: #000;
+    display: block;
+    opacity: 0.8;
+}

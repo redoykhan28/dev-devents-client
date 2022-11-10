@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
 import MyReview from "../Pages/MYReview/MyReview";
 import UpdateReview from "../Pages/MYReview/UpdateReview";
+import img404 from '../images/404/404.jpg'
 
 
 
@@ -33,7 +34,7 @@ export const route = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/service')
+                loader: () => fetch('https://devent-server.vercel.app/service')
             },
             {
                 path: '/blogs',
@@ -43,7 +44,7 @@ export const route = createBrowserRouter([
 
                 path: '/serviceDetails/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+                loader: ({ params }) => fetch(`https://devent-server.vercel.app/service/${params.id}`)
             }
 
 
@@ -65,7 +66,7 @@ export const route = createBrowserRouter([
             {
                 path: '/updateReview/:id',
                 element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/review/dynamic/${params.id}`)
+                loader: ({ params }) => fetch(`https://devent-server.vercel.app/review/dynamic/${params.id}`)
             },
             {
                 path: '/login',
@@ -76,6 +77,15 @@ export const route = createBrowserRouter([
                 element: <Registration></Registration>
             }
         ]
+    },
+    {
+        path: '*', element: <div className='ftxt text-center'>
+            <h1 className='mt-5'>
+                This page is not available.</h1>
+            <p className='text-muted'>Sorry! 404. The page you are looking for is not available</p>
+            <img className='img-fluid w-25 mx-auto' src={img404} alt="" />
+        </div>
+
     }
 ]
 )

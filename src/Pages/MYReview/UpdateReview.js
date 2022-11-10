@@ -24,7 +24,7 @@ const UpdateReview = () => {
 
         console.log(text)
 
-        fetch(`http://localhost:5000/update/${update._id}`, {
+        fetch(`https://devent-server.vercel.app/update/${update._id}`, {
 
             method: 'PUT',
             headers: {

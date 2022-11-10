@@ -2,6 +2,8 @@ import React from 'react';
 import './ServiceCard.css'
 import { FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
     const { _id, title, image, price, description, ratings } = service
@@ -10,7 +12,11 @@ const ServiceCard = ({ service }) => {
         <div>
 
             <div className="card crd">
-                <img src={image} className="card-img-top crdimg" alt="img" />
+                <PhotoProvider >
+                    <PhotoView src={image} >
+                        <img className='img-fluid  mx-auto crdimg ' src={image} alt="" />
+                    </PhotoView>
+                </PhotoProvider >
                 <div className="card-body">
                     <h5 className="card-title clr">{title}</h5>
                     <p className="card-text">{description.slice(0, 100)}...</p>

@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import image from '../../../images/Services/aleksandr-popov-hTv8aaPziOQ-unsplash.jpg'
 import ServiceCard from '../ServiceCard/ServiceCard';
 import './Service.css'
+
+
 
 const Services = () => {
 
