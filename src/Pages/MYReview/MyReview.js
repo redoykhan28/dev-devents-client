@@ -95,7 +95,7 @@ const MyReview = () => {
                 <h4 className='text-center my-5'>My <span className='clr'>Review Data</span></h4>
                 {
                     myReview.length > 0 ?
-                        <table class="table w-75 mx-auto table-danger table-striped ">
+                        <table className="table w-75 mx-auto table-danger table-striped ">
                             <thead>
                                 <tr>
                                     <th scope="col">Service Name</th>

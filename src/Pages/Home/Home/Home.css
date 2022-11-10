@@ -6,6 +6,7 @@
 .service-section {
 
     margin-top: 120px;
+
 }
 
 .ldbtn {
@@ -18,4 +19,21 @@
 
     background-color: #FE3E01;
     color: white;
+}
+
+.gallery {
+
+    margin-top: 100px;
+}
+
+.tb {
+
+    cursor: pointer;
+}
+
+.img-gl:hover {
+    content: "";
+    background-color: #000;
+    display: block;
+    opacity: 0.8;
 }
