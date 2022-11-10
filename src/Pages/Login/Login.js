@@ -33,6 +33,7 @@ const Login = () => {
 
         googleSignin(googleProvider)
             .then(result => {
+
                 const user = result.user
                 console.log(user)
                 const currentUser = { email: user?.email }
@@ -77,6 +78,7 @@ const Login = () => {
             .then(res => {
 
                 const user = res.user
+
                 console.log(user)
                 form.reset()
                 toast.success('Login Successfully!')
@@ -108,7 +110,9 @@ const Login = () => {
                 setError(err.message)
             })
 
+
     }
+
 
     return (
         <div>
